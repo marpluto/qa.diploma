@@ -11,11 +11,11 @@ public class DataHelper {
     }
 
     public static Card getApprovedCard() {
-        return new Card("4444444444444441", "12", "24", "Mikhail Maykhailov", "123");
+        return new Card("4444444444444441", "12", "24", "Mikhail Mikhailov", "123");
     }
 
     public static Card getDeclinedCard() {
-        return new Card("4444444444444442", "12", "24", "Mikhail Maykhailov", "123");
+        return new Card("4444444444444442", "12", "24", "Mikhail Mikhailov", "123");
     }
 
     //номер карты, которой нет в базе данных
@@ -23,48 +23,43 @@ public class DataHelper {
         return new Card("1234567890123456", getApprovedCard().month, getApprovedCard().year, getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    //текущий месяц и год
     public static Card getApprovedCardWithCurrentMonthAntCurrentYear() {
         return new Card(getApprovedCard().cardNumber, getCurrentMonthMinusShift(0), getCurrentYearMinusShift(0), getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    //текущий год, прошлый месяц
     public static Card getApprovedCardWithLastMonthAntCurrentYear() {
         return new Card(getApprovedCard().cardNumber, getCurrentMonthMinusShift(1), getCurrentYearMinusShift(0), getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    //текущий месяц, прошлый год
     public static Card getApprovedCardWithCurrentMonthAntLastYear() {
         return new Card(getApprovedCard().cardNumber, getCurrentMonthMinusShift(0), getCurrentYearMinusShift(1), getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    //пустая карта
+    public static Card getApprovedCardWithWrongFormatMonth() {
+        return new Card(getApprovedCard().cardNumber, "13", getApprovedCard().year, getApprovedCard().cardHolder, getApprovedCard().cvv);
+    }
+
     public static Card getEmptyCard() {
         return new Card("", "", "", "", "");
     }
 
-    //номер карты из 15-ти символов
-    public static Card getApprovedCardWhitFifteenNumbersCardNumber() {
+    public static Card getApprovedCardWhitFifteenSymbolsCardNumber() {
         return new Card("444444444444444", getApprovedCard().month, getApprovedCard().year, getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    //имя владельца на кириллице
     public static Card getApprovedCardWithCyrillicCardHolder() {
         return new Card(getApprovedCard().cardNumber, getApprovedCard().month, getApprovedCard().year, "Михаил Михайлов", getApprovedCard().cvv);
     }
 
-    //имя владельца одним словом
     public static Card getApprovedCardWithOneWordCardHolder() {
         return new Card(getApprovedCard().cardNumber, getApprovedCard().month, getApprovedCard().year, "Mikhail", getApprovedCard().cvv);
     }
 
-    //CVV двумя цифрами
-    public static Card getApprovedCardWithCVVTwoNumbers() {
+    public static Card getApprovedCardWithCVVTwoSymbols() {
         return new Card(getApprovedCard().cardNumber, getApprovedCard().month, getApprovedCard().year, getApprovedCard().cardHolder, "12");
     }
 
-    //CVV одной цифрой
-    public static Card getApprovedCardWithCVVOneNumber() {
+    public static Card getApprovedCardWithCVVOneSymbol() {
         return new Card(getApprovedCard().cardNumber, getApprovedCard().month, getApprovedCard().year, getApprovedCard().cardHolder, "1");
     }
 

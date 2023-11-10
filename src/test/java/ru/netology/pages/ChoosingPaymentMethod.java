@@ -17,7 +17,7 @@ public class ChoosingPaymentMethod {
         heading.shouldBe(visible);
     }
 
-    public PaymentGate goToBuyPage() {
+    public PaymentGate goToPaymentPage() {
         paymentButton.click();
         return new PaymentGate();
     }
