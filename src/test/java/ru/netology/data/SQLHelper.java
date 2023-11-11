@@ -43,7 +43,7 @@ public class SQLHelper {
         var connection = getConn();
         var codesSQL = " SELECT COUNT(*) FROM order_entity;";
         // Class.forName("com.mysql.cj.jdbc.Driver");
-        return runner.query(connection,codesSQL,new ScalarHandler<>());
+        return runner.query(connection, codesSQL, new ScalarHandler<>());
     }
 
 

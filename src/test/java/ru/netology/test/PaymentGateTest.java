@@ -1,5 +1,7 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import ru.netology.data.DataHelper;
 
 import org.junit.jupiter.api.*;
@@ -22,10 +24,18 @@ public class PaymentGateTest {
         SQLHelper.cleanDataBase();
     }
 
-    // настроить аллюр
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
     @Test
-    void buyWithApprovedCard() {
+    void shouldSuccessfullyBuyWithApprovedCard() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCard());
@@ -34,7 +44,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithDeclinedCard() {
+    void shouldDeclineBuyingWithDeclinedCard() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getDeclinedCard());
@@ -43,7 +53,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCardThatIsNotInDatabase() {
+    void shouldDeclineBuyingWithoutDbSavingWithCardThatIsNotInDatabase() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getCardThatIsNotInDatabase());
@@ -52,7 +62,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCurrentMonthAntCurrentYearCard() {
+    void shouldSuccessfullyBuyWithCurrentMonthAntCurrentYearCard() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntCurrentYear());
@@ -61,7 +71,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCardWithLastMonthAntCurrentYearCard() {
+    void shouldRejectInBuyingWithCardWithLastMonthAntCurrentYearCard() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithLastMonthAntCurrentYear());
@@ -70,7 +80,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCurrentMonthAntLastYearCard() {
+    void shouldRejectInBuyingWithCurrentMonthAntLastYearCard() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntLastYear());
@@ -79,7 +89,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithWrongFormatMonth() {
+    void shouldRejectInBuyingWithWrongFormatMonth() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithWrongFormatMonth());
@@ -88,7 +98,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithAllFieldsEmpty() {
+    void shouldRejectInBuyingWithAllFieldsEmpty() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getEmptyCard());
@@ -97,7 +107,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithFifteenSymbolsCardNumber() {
+    void shouldRejectInBuyingWithFifteenSymbolsCardNumber() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWhitFifteenSymbolsCardNumber());
@@ -106,7 +116,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCyrillicCardHolder() {
+    void shouldRejectInBuyingWithCyrillicCardHolder() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCyrillicCardHolder());
@@ -115,7 +125,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithOneWordCardHolder() {
+    void shouldRejectInBuyingWithOneWordCardHolder() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithOneWordCardHolder());
@@ -124,7 +134,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCVVTwoSymbols() {
+    void shouldRejectInBuyingWithCVVTwoSymbols() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCVVTwoSymbols());
@@ -133,7 +143,7 @@ public class PaymentGateTest {
     }
 
     @Test
-    void buyWithCVVOneSymbol() {
+    void shouldRejectInBuyingWithCVVOneSymbol() {
         var paymentMethodPage = new ChoosingPaymentMethod();
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCVVOneSymbol());
