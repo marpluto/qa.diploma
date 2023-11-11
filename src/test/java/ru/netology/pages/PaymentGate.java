@@ -13,8 +13,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentGate {
-    private SelenideElement heading = $$("h3").find(exactText("Оплата по карте"));
-    private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("[class=\"input__control\"]");
+    private SelenideElement heading = $(byText("Оплата по карте"));
+    //private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("[class=\"input__control\"]");
+    private SelenideElement cardNumberField = $(byText("Номер карт")).parent().$("input");
     private SelenideElement monthField = $(byText("Месяц")).parent().$("[class=\"input__control\"]");
     private SelenideElement yearField = $(byText("Год")).parent().$("[class=\"input__control\"]");
     private SelenideElement cardHolderField = $(byText("Владелец")).parent().$("[class=\"input__control\"]");

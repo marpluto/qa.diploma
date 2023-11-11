@@ -18,7 +18,6 @@ public class DataHelper {
         return new Card("4444444444444442", "12", "24", "Mikhail Mikhailov", "123");
     }
 
-    //номер карты, которой нет в базе данных
     public static Card getCardThatIsNotInDatabase() {
         return new Card("1234567890123456", getApprovedCard().month, getApprovedCard().year, getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
@@ -70,7 +69,7 @@ public class DataHelper {
         private String year;
         private String cardHolder;
         private String cvv;
-    }
+   }
 
     public static String getCurrentYearMinusShift(int shift) {
         return LocalDate.now().minusYears(shift).format(DateTimeFormatter.ofPattern("YY"));

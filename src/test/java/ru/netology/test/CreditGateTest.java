@@ -12,11 +12,10 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreditGateTest {
-    public static String url = System.getProperty("sut.url");
 
     @BeforeEach
     public void openPage() {
-        open(url);
+        open("http://localhost:8080");
     }
 
     @AfterEach
@@ -24,15 +23,15 @@ public class CreditGateTest {
         SQLHelper.cleanDataBase();
     }
 
-    @BeforeAll
-    static void setUpAll() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
-
-    @AfterAll
-    static void tearDownAll() {
-        SelenideLogger.removeListener("allure");
-    }
+//    @BeforeAll
+//    static void setUpAll() {
+//        SelenideLogger.addListener("allure", new AllureSelenide());
+//    }
+//
+//    @AfterAll
+//    static void tearDownAll() {
+//        SelenideLogger.removeListener("allure");
+//    }
 
     @Test
     void shouldSuccessfullyBuyWithApprovedCard() {

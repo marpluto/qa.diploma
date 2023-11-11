@@ -9,15 +9,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLHelper {
-    private static String url = System.getProperty("db.url");
     private static QueryRunner runner = new QueryRunner();
 
     private SQLHelper() {
     }
 
     private static Connection getConn() throws SQLException {
-        return DriverManager.getConnection(url, "app", "pass");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
     }
+
+//    public static void cleanDataBase () {
+//        try (var connection = getConn()){
+//            runner.execute(connection, "DELETE FROM credit_request_entity;");
+//            runner.execute(connection, "DELETE FROM order_entity;");
+//            runner.execute(connection, "DELETE FROM payment_entity;");
+//        } catch (SQLException exception) {
+//            System.out.println("SQL exception in cleanDataBase");
+//        }
+//    }
 
     @SneakyThrows
     public static void cleanDataBase() {
@@ -37,7 +46,18 @@ public class SQLHelper {
         return getData(codesSQL);
     }
 
-    // Уточнить закомменченное
+//    public static String getOrderCount() {
+//        Long count = null;
+//        try {
+//            var connection = getConn();
+//            var codesSQL = " SELECT COUNT(*) FROM order_entity;";
+//            return runner.query(connection, codesSQL, new ScalarHandler<>());
+//        } catch (SQLException exception) {
+//            exception.printStackTrace();
+//        }
+//        return Long.toString(count);
+//    }
+
     @SneakyThrows
     public static String getOrderCount() {
         var connection = getConn();
@@ -46,12 +66,20 @@ public class SQLHelper {
         return runner.query(connection, codesSQL, new ScalarHandler<>());
     }
 
+//    private static String getData(String query) {
+//        String data = "";
+//        try {
+//            var connection = getConn();
+//            data = runner.query(connection, query, new ScalarHandler<>());
+//        } catch (SQLException exception) {
+//            exception.printStackTrace();
+//        }
+//        return data;
+//    }
 
-    // Уточнить закомменченное
     @SneakyThrows
     private static String getData(String query) {
         var connection = getConn();
-        // Class.forName("com.mysql.cj.jdbc.Driver");
         return runner.query(connection, query, new ScalarHandler<>());
     }
 }
