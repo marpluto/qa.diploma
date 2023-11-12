@@ -18,16 +18,6 @@ public class SQLHelper {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
     }
 
-//    public static void cleanDataBase () {
-//        try (var connection = getConn()){
-//            runner.execute(connection, "DELETE FROM credit_request_entity;");
-//            runner.execute(connection, "DELETE FROM order_entity;");
-//            runner.execute(connection, "DELETE FROM payment_entity;");
-//        } catch (SQLException exception) {
-//            System.out.println("SQL exception in cleanDataBase");
-//        }
-//    }
-
     @SneakyThrows
     public static void cleanDataBase() {
         var connection = getConn();
@@ -46,36 +36,17 @@ public class SQLHelper {
         return getData(codesSQL);
     }
 
-//    public static String getOrderCount() {
-//        Long count = null;
-//        try {
-//            var connection = getConn();
-//            var codesSQL = " SELECT COUNT(*) FROM order_entity;";
-//            return runner.query(connection, codesSQL, new ScalarHandler<>());
-//        } catch (SQLException exception) {
-//            exception.printStackTrace();
-//        }
-//        return Long.toString(count);
-//    }
-
-    @SneakyThrows
     public static String getOrderCount() {
-        var connection = getConn();
-        var codesSQL = " SELECT COUNT(*) FROM order_entity;";
-        // Class.forName("com.mysql.cj.jdbc.Driver");
-        return runner.query(connection, codesSQL, new ScalarHandler<>());
+        Long count = null;
+        try {
+            var connection = getConn();
+            var codesSQL = " SELECT COUNT(*) FROM order_entity;";
+            count = runner.query(connection, codesSQL, new ScalarHandler<>());
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return Long.toString(count);
     }
-
-//    private static String getData(String query) {
-//        String data = "";
-//        try {
-//            var connection = getConn();
-//            data = runner.query(connection, query, new ScalarHandler<>());
-//        } catch (SQLException exception) {
-//            exception.printStackTrace();
-//        }
-//        return data;
-//    }
 
     @SneakyThrows
     private static String getData(String query) {

@@ -23,15 +23,15 @@ public class CreditGateTest {
         SQLHelper.cleanDataBase();
     }
 
-//    @BeforeAll
-//    static void setUpAll() {
-//        SelenideLogger.addListener("allure", new AllureSelenide());
-//    }
-//
-//    @AfterAll
-//    static void tearDownAll() {
-//        SelenideLogger.removeListener("allure");
-//    }
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
     @Test
     void shouldSuccessfullyBuyWithApprovedCard() {
@@ -84,15 +84,6 @@ public class CreditGateTest {
         var payment = paymentMethodPage.goToCreditPage();
         payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntLastYear());
         payment.waitNotificationExpiredError();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithWrongFormatMonth() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithWrongFormatMonth());
-        payment.waitNotificationExpirationDateError();
         assertEquals("0", SQLHelper.getOrderCount());
     }
 

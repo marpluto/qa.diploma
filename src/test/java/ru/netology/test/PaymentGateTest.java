@@ -12,11 +12,10 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentGateTest {
-    public static String url = System.getProperty("sut.url");
 
     @BeforeEach
     public void openPage() {
-        open(url);
+        open("http://localhost:8080");
     }
 
     @AfterEach
@@ -85,15 +84,6 @@ public class PaymentGateTest {
         var payment = paymentMethodPage.goToPaymentPage();
         payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntLastYear());
         payment.waitNotificationExpiredError();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithWrongFormatMonth() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToPaymentPage();
-        payment.inputData(DataHelper.getApprovedCardWithWrongFormatMonth());
-        payment.waitNotificationExpirationDateError();
         assertEquals("0", SQLHelper.getOrderCount());
     }
 

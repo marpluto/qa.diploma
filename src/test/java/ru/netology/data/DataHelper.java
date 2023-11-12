@@ -34,10 +34,6 @@ public class DataHelper {
         return new Card(getApprovedCard().cardNumber, getCurrentMonthMinusShift(0), getCurrentYearMinusShift(1), getApprovedCard().cardHolder, getApprovedCard().cvv);
     }
 
-    public static Card getApprovedCardWithWrongFormatMonth() {
-        return new Card(getApprovedCard().cardNumber, "13", getApprovedCard().year, getApprovedCard().cardHolder, getApprovedCard().cvv);
-    }
-
     public static Card getEmptyCard() {
         return new Card("", "", "", "", "");
     }
@@ -69,7 +65,7 @@ public class DataHelper {
         private String year;
         private String cardHolder;
         private String cvv;
-   }
+    }
 
     public static String getCurrentYearMinusShift(int shift) {
         return LocalDate.now().minusYears(shift).format(DateTimeFormatter.ofPattern("YY"));

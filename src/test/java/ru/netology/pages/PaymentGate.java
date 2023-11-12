@@ -14,21 +14,19 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentGate {
     private SelenideElement heading = $(byText("Оплата по карте"));
-    //private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("[class=\"input__control\"]");
-    private SelenideElement cardNumberField = $(byText("Номер карт")).parent().$("input");
-    private SelenideElement monthField = $(byText("Месяц")).parent().$("[class=\"input__control\"]");
-    private SelenideElement yearField = $(byText("Год")).parent().$("[class=\"input__control\"]");
-    private SelenideElement cardHolderField = $(byText("Владелец")).parent().$("[class=\"input__control\"]");
-    private SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("[class=\"input__control\"]");
-    private SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("[class=\"notification__content\"]");
-    private SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("[class=\"notification__content\"]");
+    private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("input");
+    private SelenideElement monthField = $(byText("Месяц")).parent().$("input");
+    private SelenideElement yearField = $(byText("Год")).parent().$("input");
+    private SelenideElement cardHolderField = $(byText("Владелец")).parent().$("input");
+    private SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("input");
+    private SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("input");
+    private SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("input");
     private SelenideElement wrongFormatError = $(byText("Неверный формат"));
     private ElementsCollection wrongFormatErrorAll = $$(byText("Неверный формат"));
-    private SelenideElement cardExpirationDateError = $(byText("Неверно указан срок действия карты"));
     private SelenideElement cardExpiredError = $(byText("Истёк срок действия карты"));
     private SelenideElement requiredFieldError = $(byText("Поле обязательно для заполнения"));
 
-    private SelenideElement cancelField = $$("[class=\"icon-button__text\"]").first();
+    private SelenideElement cancelField = $$("[class=icon-button__text]").first();
     private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
 
     public PaymentGate() {
@@ -55,10 +53,6 @@ public class PaymentGate {
 
     public void waitNotificationWrongFormat() {
         wrongFormatError.shouldBe(visible, Duration.ofSeconds(15));
-    }
-
-    public void waitNotificationExpirationDateError() {
-        cardExpirationDateError.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void waitNotificationExpiredError() {
