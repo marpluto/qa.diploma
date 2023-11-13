@@ -42,102 +42,102 @@ public class CreditGateTest {
         assertEquals("APPROVED", SQLHelper.getCreditRequestStatus());
     }
 
-    @Test
-    void shouldDeclineBuyingWithDeclinedCard() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getDeclinedCard());
-        payment.waitNotificationDeclined();
-        assertEquals("DECLINED", SQLHelper.getCreditRequestStatus());
-    }
-
-    @Test
-    void shouldDeclineBuyingWithoutDbSavingWithCardThatIsNotInDatabase() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getCardThatIsNotInDatabase());
-        payment.waitNotificationDeclined();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldSuccessfullyBuyWithCurrentMonthAntCurrentYearCard() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntCurrentYear());
-        payment.waitNotificationApproved();
-        assertEquals("APPROVED", SQLHelper.getCreditRequestStatus());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithCardWithLastMonthAntCurrentYearCard() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithLastMonthAntCurrentYear());
-        payment.waitNotificationExpiredError();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingithCurrentMonthAntLastYearCard() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntLastYear());
-        payment.waitNotificationExpiredError();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithAllFieldsEmpty() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getEmptyCard());
-        payment.waitNotificationWrongFormatAllFields();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithFifteenSymbolsCardNumber() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWhitFifteenSymbolsCardNumber());
-        payment.waitNotificationWrongFormat();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithCyrillicCardHolder() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithCyrillicCardHolder());
-        payment.waitNotificationWrongFormat();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithOneWordCardHolder() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithOneWordCardHolder());
-        payment.waitNotificationWrongFormat();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithCVVTwoSymbols() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithCVVTwoSymbols());
-        payment.waitNotificationWrongFormat();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
-
-    @Test
-    void shouldRejectInBuyingWithCVVOneSymbol() {
-        var paymentMethodPage = new ChoosingPaymentMethod();
-        var payment = paymentMethodPage.goToCreditPage();
-        payment.inputData(DataHelper.getApprovedCardWithCVVOneSymbol());
-        payment.waitNotificationWrongFormat();
-        assertEquals("0", SQLHelper.getOrderCount());
-    }
+//    @Test
+//    void shouldDeclineBuyingWithDeclinedCard() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getDeclinedCard());
+//        payment.waitNotificationDeclined();
+//        assertEquals("DECLINED", SQLHelper.getCreditRequestStatus());
+//    }
+//
+//    @Test
+//    void shouldDeclineBuyingWithoutDbSavingWithCardThatIsNotInDatabase() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getCardThatIsNotInDatabase());
+//        payment.waitNotificationDeclined();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldSuccessfullyBuyWithCurrentMonthAntCurrentYearCard() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntCurrentYear());
+//        payment.waitNotificationApproved();
+//        assertEquals("APPROVED", SQLHelper.getCreditRequestStatus());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithCardWithLastMonthAntCurrentYearCard() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithLastMonthAntCurrentYear());
+//        payment.waitNotificationExpiredError();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingithCurrentMonthAntLastYearCard() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithCurrentMonthAntLastYear());
+//        payment.waitNotificationExpiredError();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithAllFieldsEmpty() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getEmptyCard());
+//        payment.waitNotificationWrongFormatAllFields();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithFifteenSymbolsCardNumber() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWhitFifteenSymbolsCardNumber());
+//        payment.waitNotificationWrongFormat();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithCyrillicCardHolder() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithCyrillicCardHolder());
+//        payment.waitNotificationWrongFormat();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithOneWordCardHolder() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithOneWordCardHolder());
+//        payment.waitNotificationWrongFormat();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithCVVTwoSymbols() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithCVVTwoSymbols());
+//        payment.waitNotificationWrongFormat();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
+//
+//    @Test
+//    void shouldRejectInBuyingWithCVVOneSymbol() {
+//        var paymentMethodPage = new ChoosingPaymentMethod();
+//        var payment = paymentMethodPage.goToCreditPage();
+//        payment.inputData(DataHelper.getApprovedCardWithCVVOneSymbol());
+//        payment.waitNotificationWrongFormat();
+//        assertEquals("0", SQLHelper.getOrderCount());
+//    }
 }

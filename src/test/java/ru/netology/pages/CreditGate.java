@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 
 public class CreditGate {
-    private SelenideElement heading = $(byText("Кредит по данным карты"));
+    private final SelenideElement heading = $(byText("Кредит по данным карты"));
     private final SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("input");
     private final SelenideElement monthField = $(byText("Месяц")).parent().$("input");
     private final SelenideElement yearField = $(byText("Год")).parent().$("input");

@@ -13,21 +13,21 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentGate {
-    private SelenideElement heading = $(byText("Оплата по карте"));
-    private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("input");
-    private SelenideElement monthField = $(byText("Месяц")).parent().$("input");
-    private SelenideElement yearField = $(byText("Год")).parent().$("input");
-    private SelenideElement cardHolderField = $(byText("Владелец")).parent().$("input");
-    private SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("input");
-    private SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("input");
-    private SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("input");
-    private SelenideElement wrongFormatError = $(byText("Неверный формат"));
-    private ElementsCollection wrongFormatErrorAll = $$(byText("Неверный формат"));
-    private SelenideElement cardExpiredError = $(byText("Истёк срок действия карты"));
-    private SelenideElement requiredFieldError = $(byText("Поле обязательно для заполнения"));
+    private final SelenideElement heading = $(byText("Оплата по карте"));
+    private final SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("input");
+    private final SelenideElement monthField = $(byText("Месяц")).parent().$("input");
+    private final SelenideElement yearField = $(byText("Год")).parent().$("input");
+    private final SelenideElement cardHolderField = $(byText("Владелец")).parent().$("input");
+    private final SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("input");
+    private final SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("input");
+    private final SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("input");
+    private final SelenideElement wrongFormatError = $(byText("Неверный формат"));
+    private final ElementsCollection wrongFormatErrorAll = $$(byText("Неверный формат"));
+    private final SelenideElement cardExpiredError = $(byText("Истёк срок действия карты"));
+    private final SelenideElement requiredFieldError = $(byText("Поле обязательно для заполнения"));
 
-    private SelenideElement cancelField = $$("[class=icon-button__text]").first();
-    private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
+    private final SelenideElement cancelField = $$("[class=icon-button__text]").first();
+    private final SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
 
     public PaymentGate() {
         heading.shouldBe(visible);
