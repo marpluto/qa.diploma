@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ChoosingPaymentMethod {
-    private SelenideElement heading = $$("h3").find(exactText("Оплата по карте"));
+    private SelenideElement heading = $$("h2").find(exactText("Путешествие дня"));
     private final SelenideElement paymentButton = $$("button").find(exactText("Купить"));
     private final SelenideElement creditButton = $$("button").find(exactText("Купить в кредит"));
 

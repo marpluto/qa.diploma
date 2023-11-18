@@ -11,11 +11,11 @@ public class DataHelper {
     }
 
     public static Card getApprovedCard() {
-        return new Card("4444444444444441", "12", "24", "Mikhail Mikhailov", "123");
+        return new Card("4444444444444441", getCurrentMonthPlusShift(1), getCurrentYearPlusShift(1), "Mikhail Mikhailov", "123");
     }
 
     public static Card getDeclinedCard() {
-        return new Card("4444444444444442", "12", "24", "Mikhail Mikhailov", "123");
+        return new Card("4444444444444442", getCurrentMonthPlusShift(1), getCurrentYearPlusShift(1), "Mikhail Mikhailov", "123");
     }
 
     public static Card getCardThatIsNotInDatabase() {
@@ -73,5 +73,13 @@ public class DataHelper {
 
     public static String getCurrentMonthMinusShift(int shift) {
         return LocalDate.now().minusMonths(shift).format(DateTimeFormatter.ofPattern("MM"));
+    }
+
+    public static String getCurrentYearPlusShift(int shift) {
+        return LocalDate.now().plusYears(shift).format(DateTimeFormatter.ofPattern("YY"));
+    }
+
+    public static String getCurrentMonthPlusShift(int shift) {
+        return LocalDate.now().plusMonths(shift).format(DateTimeFormatter.ofPattern("MM"));
     }
 }

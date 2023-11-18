@@ -20,10 +20,11 @@ public class CreditGate {
     private final SelenideElement yearField = $(byText("Год")).parent().$("input");
     private final SelenideElement cardHolderField = $(byText("Владелец")).parent().$("input");
     private final SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("input");
-    private final SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("input");
-    private final SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("input");
+    private final SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("[class=notification__content]");
+    private final SelenideElement declinedOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("[class=notification__content]");
     private final SelenideElement wrongFormatError = $(byText("Неверный формат"));
     private final ElementsCollection wrongFormatErrorAll = $$(byText("Неверный формат"));
+    private SelenideElement cardInvalidDateError = $(byText("Неверно указан срок действия карты"));
     private final SelenideElement cardExpiredError = $(byText("Истёк срок действия карты"));
     private final SelenideElement requiredFieldError = $(byText("Поле обязательно для заполнения"));
 
@@ -54,6 +55,10 @@ public class CreditGate {
 
     public void waitNotificationWrongFormat() {
         wrongFormatError.shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    public void waitNotificationInvalidDateError() {
+        cardInvalidDateError.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void waitNotificationExpiredError() {
