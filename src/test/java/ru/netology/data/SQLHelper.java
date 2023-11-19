@@ -9,14 +9,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLHelper {
-    private static String url = System.getProperty("db.url");
     private static QueryRunner runner = new QueryRunner();
 
     private SQLHelper() {
     }
 
     private static Connection getConn() throws SQLException {
-        return DriverManager.getConnection(url, "app", "pass");
+
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
+
+        //return DriverManager.getConnection("jdbc:postgresql://localhost:5432/app", "app", "pass");
     }
 
     @SneakyThrows
