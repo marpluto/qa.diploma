@@ -48,6 +48,8 @@
 Завершить работу SUT, можно использовать сочетание клавиш ctrl+C (cmd+C для macOS).
 </details> 
 
+- 5.6 Перейти к шагу 7
+
 ### 6. Запуск проекта в PostgreSQL
 - 6.1 Используя плагин для работы с Docker в IntelliJ IDEA запустить контейнеры `postgres` и `nodejs`
 
@@ -77,6 +79,8 @@
 <details><summary>После прогона автотестов в MySQL</summary>
 Завершить работу SUT, можно использовать сочетание клавиш ctrl+C (cmd+C для macOS).
 </details>
+
+- 6.6 Перейти к шагу 7
 
 ### 7. Запустить автотесты
 В консоли IntelliJ IDEA ввести команду `./gradlew clean test --info`
