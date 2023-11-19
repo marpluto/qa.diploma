@@ -1,6 +1,7 @@
 # Дипломный проект по профессии «Тестировщик»
 - [План автоматизации](https://github.com/marpluto/qa.diploma/blob/master/Plan.md)
 - [Отчёт о проведённом тестировании](https://github.com/marpluto/qa.diploma/blob/master/report/Report.md)
+- [Отчёт о проведённой автоматизации](https://github.com/marpluto/qa.diploma/blob/master/report/Summary.md)
 
 ## Процедура запуска автотестов
 ### 1. Необходимое для запуска окружение
