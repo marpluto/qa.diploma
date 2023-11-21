@@ -33,20 +33,18 @@
 
 ![Screenshot_26](https://github.com/marpluto/qa.diploma/assets/120597031/b8cd8a0f-e341-4e1f-9ec3-1e09d82a6da9)
 
-- 5.3 В классе [SQLHelper.java](src%2Ftest%2Fjava%2Fru%2Fnetology%2Fdata%2FSQLHelper.java) в строке `19` прописать `return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");`
+- 5.3 В файле [build.gradle](https://github.com/marpluto/qa.diploma/blob/master/build.gradle) в настройке `test {}` прописать `systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app')`. Обновить build.gradle
 
-![Screenshot_27](https://github.com/marpluto/qa.diploma/assets/120597031/b7ce788b-e81d-4250-bf8e-7630f1a7b7ef)
+![Screenshot_39](https://github.com/marpluto/qa.diploma/assets/120597031/f6d15252-a8f1-4ba2-af47-20e9ba90763e)
 
-
-- 5.4 Открыть программу DBeaver. Создать новое соединение с БД MySQL, в качестве данных для подключения указать: База данных `app`, Пользователь `app`, Пароль `pass`, Порт `3306`. Проверить соединение, после чего нажать `Готово`
-
-![Screenshot_31](https://github.com/marpluto/qa.diploma/assets/120597031/2c14be72-5509-4bf4-9f7c-31c8d64ca359)
-
-
-- 5.5 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:mysql://localhost:3306/app`
+- 5.4 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:mysql://localhost:3306/app`
 <details><summary>После прогона автотестов в MySQL</summary>
 Завершить работу SUT, можно использовать сочетание клавиш ctrl+C (cmd+C для macOS).
 </details> 
+
+- 5.5 Открыть программу DBeaver. Создать новое соединение с БД MySQL, в качестве данных для подключения указать: База данных `app`, Пользователь `app`, Пароль `pass`, Порт `3306`. Проверить соединение, после чего нажать `Готово`
+
+![Screenshot_31](https://github.com/marpluto/qa.diploma/assets/120597031/2c14be72-5509-4bf4-9f7c-31c8d64ca359)
 
 - 5.6 Перейти к шагу 7
 
@@ -65,20 +63,18 @@
 ![Screenshot_24](https://github.com/marpluto/qa.diploma/assets/120597031/b908bb50-a13c-4a48-9247-5e6c5b63626b)
 
 
-- 6.3 В классе [SQLHelper.java](src%2Ftest%2Fjava%2Fru%2Fnetology%2Fdata%2FSQLHelper.java) в строке `21` прописать `return DriverManager.getConnection("jdbc:postgresql://localhost:5432/app", "app", "pass");`
+- 6.3 В файле [build.gradle](https://github.com/marpluto/qa.diploma/blob/master/build.gradle) в настройке `test {}` прописать `systemProperty 'db.url', System.getProperty('db.url', 'jdbc:postgresql://localhost:5432/app')`. Обновить build.gradle
 
-![Screenshot_25](https://github.com/marpluto/qa.diploma/assets/120597031/1e7f6711-5c7d-4d85-98ee-161388ba664b)
+![Screenshot_38](https://github.com/marpluto/qa.diploma/assets/120597031/15908edc-feec-4a93-8168-844c8e9a3e2f)
 
-
-- 6.4 Открыть программу DBeaver. Создать новое соединение с БД PostgreSQL, в качестве данных для подключения указать: База данных `app`, Пользователь `app`, Пароль `pass`, Порт `5432`. Проверить соединение, после чего нажать `Готово`
-
-![Screenshot_28](https://github.com/marpluto/qa.diploma/assets/120597031/dddcb3c6-a024-470a-b6c1-36d986094494)
-
-
-- 6.5 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:postgresql://localhost:5432/app`
+- 6.4 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:postgresql://localhost:5432/app`
 <details><summary>После прогона автотестов в MySQL</summary>
 Завершить работу SUT, можно использовать сочетание клавиш ctrl+C (cmd+C для macOS).
 </details>
+
+- 6.5 Открыть программу DBeaver. Создать новое соединение с БД PostgreSQL, в качестве данных для подключения указать: База данных `app`, Пользователь `app`, Пароль `pass`, Порт `5432`. Проверить соединение, после чего нажать `Готово`
+
+![Screenshot_28](https://github.com/marpluto/qa.diploma/assets/120597031/dddcb3c6-a024-470a-b6c1-36d986094494)
 
 - 6.6 Перейти к шагу 7
 
