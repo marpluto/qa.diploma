@@ -35,7 +35,8 @@
 
 - 5.3 В файле [build.gradle](https://github.com/marpluto/qa.diploma/blob/master/build.gradle) в настройке `test {}` прописать `systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app')`. Обновить build.gradle
 
-![Screenshot_39](https://github.com/marpluto/qa.diploma/assets/120597031/f6d15252-a8f1-4ba2-af47-20e9ba90763e)
+<img width="1021" alt="Screenshot at Nov 21 08-33-38" src="https://github.com/marpluto/qa.diploma/assets/120597031/99b115db-e95a-4477-baea-8be74dcff20b">
+
 
 - 5.4 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:mysql://localhost:3306/app`
 <details><summary>После прогона автотестов в MySQL</summary>
@@ -65,7 +66,8 @@
 
 - 6.3 В файле [build.gradle](https://github.com/marpluto/qa.diploma/blob/master/build.gradle) в настройке `test {}` прописать `systemProperty 'db.url', System.getProperty('db.url', 'jdbc:postgresql://localhost:5432/app')`. Обновить build.gradle
 
-![Screenshot_38](https://github.com/marpluto/qa.diploma/assets/120597031/15908edc-feec-4a93-8168-844c8e9a3e2f)
+<img width="1024" alt="Screenshot at Nov 21 08-34-55" src="https://github.com/marpluto/qa.diploma/assets/120597031/9b09b2f7-914d-47a5-89a7-305bcc3649f0">
+
 
 - 6.4 В консоли IntelliJ IDEA запустить SUT командой `java -jar ./artifacts/aqa-shop.jar -P:jdbc url=jdbc:postgresql://localhost:5432/app`
 <details><summary>После прогона автотестов в MySQL</summary>
